@@ -10,7 +10,7 @@ export function withGuard(
   redirectTo?: RoutePath
 ) {
   return function RouteElement(props: Record<string, unknown>) {
-    const sessionRole = 'USER'; // TODO: replace to role from authModel
+    const sessionRole = 'USER'; // TODO: replace role from authModel
 
     if (!isAccessGranted(sessionRole, permissibleRoles)) {
       return (
@@ -29,8 +29,6 @@ const isAccessGranted = (
   sessionRole: Role,
   permissibleRoles: ExcludeStrict<Role, (typeof SUPER_ROLES)[number]>[]
 ) => {
-  return (
-    SUPER_ROLES.some((permissibleRole) => permissibleRole === sessionRole) ||
-    permissibleRoles.some((permissibleRole) => permissibleRole === sessionRole)
-  );
+  const allPermissibleRoles = [...SUPER_ROLES, ...permissibleRoles];
+  return allPermissibleRoles.some((role) => role === sessionRole);
 };
