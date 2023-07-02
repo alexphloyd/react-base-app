@@ -1,3 +1,4 @@
+import { Button } from '@mui/joy';
 import { useNavigate } from 'react-router';
 
 export default function AccessDenied() {
@@ -5,9 +6,15 @@ export default function AccessDenied() {
   const handleRedirect = () => navigate('/');
 
   return (
-    <main>
-      <h2>Access Denied</h2>
-      <button onClick={handleRedirect}>Back Home</button>
+    <main className='flex flex-col items-center p-4'>
+      <span className='mb-2'>access-denied</span>
+      <Button
+        className='w-fit'
+        variant='outlined'
+        onClick={handleRedirect}
+      >
+        Home
+      </Button>
     </main>
   );
 }

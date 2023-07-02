@@ -1,3 +1,5 @@
+import { Button } from '@mui/joy';
+import { ExampleForm } from '@widgets/example-form';
 import { useNavigate } from 'react-router';
 
 export default function Home() {
@@ -5,9 +7,17 @@ export default function Home() {
   const handleRedirect = () => navigate('/settings');
 
   return (
-    <main>
-      <h1>Home Page</h1>
-      <button onClick={handleRedirect}>Go To Settings</button>
+    <main className='flex flex-col items-center p-4'>
+      <span className='mb-2'>react-base-app</span>
+      <Button
+        className='w-fit'
+        variant='outlined'
+        onClick={handleRedirect}
+      >
+        Settings
+      </Button>
+
+      <ExampleForm />
     </main>
   );
 }
