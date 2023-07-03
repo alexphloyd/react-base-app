@@ -6,8 +6,7 @@ import { DatePicker } from '@shared/ui/date-picker';
 
 export const ExampleForm = () => {
   const handleSubmit = async (data: z.infer<typeof ExampleSchema>) => {
-    console.log('HEY MEY');
-    console.log(data, 'Heu');
+    console.log(data);
   };
 
   return (
